@@ -1,0 +1,43 @@
+import {Img, Button } from "@chakra-ui/react"
+import { useState } from "react"
+
+let Mycart=()=>{
+    const[itemnumber,putitemnumber]=useState(1)
+    const[changecost,setchangecost]=useState(1)
+    const[total,puttotal]=useState(1)
+    const Handlesum=(el,value)=>{
+        setchangecost(el.cost*itemnumber)
+        putitemnumber((prev)=>prev+value)
+    }
+    var arr=JSON.parse(localStorage.getItem("cartitem"))
+    const HandleClick=(index)=>{
+       arr.splice(index,1)
+       localStorage.setItem("cartitem",JSON.stringify(arr))
+       window.location.reload()
+    }
+    return(
+        <div style={{display:'grid',gridTemplateRows:"repeat(3,1fr)",gridTemplateColumns:"repeat(3,1fr)",gap:"20px",justifyContent:'center'}}>
+            <div style={{display:"flex",justifyContent:"end"}}>
+                 total:-<p>{arr.cost}</p>
+            </div>
+            {
+                arr.map((el,index)=>{
+                    return(
+                        <div style={{border:'1px solid red'}} key={index}>
+                            <Img src={el.image} alt={el.id}/>
+                           {itemnumber===1?<p>{el.cost}</p>:<p>{changecost}</p>} 
+                            <Button disabled={itemnumber===1} onClick={()=>Handlesum(el,-1) } >-</Button>
+                            <Button>{itemnumber}</Button>
+                            <Button onClick={()=>Handlesum(el,1)}>+</Button>
+                            <br/>
+                            <br/>
+                            <Button onClick={()=>HandleClick(index)} >Remove Item </Button>
+                        </div>
+                    )
+                })
+            }
+           {/* <Img src="https://www.beautybebo.com/pub/media/ads/home-slider/Ponds_Forent_Banner_6-min.jpg" />  */}
+        </div>
+    )
+}
+export default Mycart

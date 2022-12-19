@@ -1,0 +1,11 @@
+.linkstyle{
+    display :flex;
+    justify-content: space-between;
+    background-color: rgb(225, 180, 187);
+    margin: 10px;
+    color: rgb(128, 67, 67);
+}
+.May{
+  display: flex;
+  gap:10px;
+}
