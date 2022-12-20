@@ -7,6 +7,7 @@ const Skin=()=>{
     const [Data,setData]=useState([])
     const[page,setpage]=useState(1)
     const[sort,setsort]=useState("asc")
+    const btn= new Array(7).fill("")
     var box=[]
     box = JSON.parse(localStorage.getItem("cartitem"))||[]
     //https://ravishiva-1pi.onrender.com/skin
@@ -30,7 +31,7 @@ const Skin=()=>{
         <div>
             <div style={{display:"flex",justifyContent:"start",marginBottom:"20px"}}>
             <Button onClick={()=>setsort("asc")}>Ascending</Button>
-            <Button onClick={()=>setsort("desc")} >Desecnding</Button>
+            <Button onClick={()=>setsort("desc")} >Descending</Button>
             </div>
           <b style={{fontFamily:"revert-layer"}}> get glowing Skin</b>
           <br/>
@@ -41,7 +42,7 @@ const Skin=()=>{
                 return(
                     <div key={el.id} style={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",padding:'20px'}} >
                     <Img src={el.image}/>
-                    <p>{el.cost}</p>
+                    <p>₹{el.cost}</p>
                     <p>{el.description}</p>
                     <Button bg={"blue.200"} onClick={()=>Handleclick(el)}>Add to Cart</Button>
                     </div>
@@ -49,9 +50,17 @@ const Skin=()=>{
             })
           }
         </div>
-       <Button disabled={page===1} onClick={()=>setpage(page-1)}>Previous</Button>
-       <Button>{page}</Button>
-       <Button disabled={page===7} onClick={()=>setpage(page+1)}>Next</Button>
+       <div style={{display:"flex",justifyContent:"center"}}>
+       {
+        btn.map((el,i)=>{
+            return(
+                <div style={{display:"flex",}}>
+                    <Button onClick={()=>setpage(i+1)} >{i+1}</Button>
+                </div>
+            )
+        })
+       }
+       </div>
        <Footer/>
         </div>
     )

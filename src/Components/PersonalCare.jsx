@@ -37,7 +37,7 @@ const PersonalCare=()=>{
                 return(
                     <div key={el.id} style={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",padding:'20px'}} >
                     <Img src={el.image}/>
-                    <p>{el.cost}</p>
+                    <p>₹{el.cost}</p>
                     <p>{el.description}</p>
                     <Button bg={"blue.200"} onClick={()=>Handleclick(el)}>Add to Cart</Button>
                     </div>

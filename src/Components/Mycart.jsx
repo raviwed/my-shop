@@ -36,7 +36,7 @@ let Mycart=({onOpen})=>{
                              
                         <div  style={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",padding:"20px"}} key={index}>
                             <Img src={el.image} alt={el.id}/>
-                              <p>{el.cost*itemnumber}</p>
+                              <p>₹{el.cost*itemnumber}</p>
                             <Button disabled={itemnumber===1} onClick={()=>Handlesum(-1) } >-</Button>
                             <Button>{itemnumber}</Button>
                             <Button onClick={()=>Handlesum(1)}>+</Button>
