@@ -1,3 +1,0 @@
- export const GET_THE_REQUEST='GET_THE_REQUEST' 
- export const GET_THE_SUCESSES='GET_THE_REQUEST'
- export const GET_THE_ERROR='GET_THE_REQUEST' 
